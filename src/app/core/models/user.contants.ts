@@ -3,18 +3,18 @@ import {UserModel} from "./user.model";
 export const USERS: UserModel[] = [
   {
     id: 1,
-    username: 'ihorvat',
-    name: 'Ivan',
-    email: 'ihorvat@gmail.com',
-    lastname: 'Horvat',
+    name: 'Alice',
+    lastname: 'Smith',
+    email: 'asmith@example.com',
+    username: 'asmith',
     password: 'Pass123!'
   },
   {
     id: 2,
-    username: 'ljones',
-    name: 'Laura',
-    email: 'lJones@gmail.com',
-    lastname: 'Jones',
-    password: 'Pass456!',
-  }
+    name: 'Michael',
+    lastname: 'Brown',
+    email: 'mbrown@example.com',
+    username: 'mbrown',
+    password: 'Pass456!'
+  },
 ];

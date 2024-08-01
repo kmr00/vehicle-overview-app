@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuItem} from "primeng/api";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
   menuItems: MenuItem[] = [];
   protected readonly sessionStorage = sessionStorage;
 
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -21,8 +22,11 @@ export class HeaderComponent implements OnInit {
     this.menuItems = [
       {
         id: '1',
-        label: 'Logout',
+        label: 'Sign out',
         icon: 'pi pi-sign-out',
+        command: () => {
+          this.authService.logout();
+        }
       },
     ];
   }

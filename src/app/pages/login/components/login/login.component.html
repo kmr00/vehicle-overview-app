@@ -1,0 +1,90 @@
+<div class="mx-auto px-4 py-4 lg:px-6 lg:py-6">
+  <p-card styleClass="lg:p-5 lg:max-w-max mx-auto">
+    <ng-template pTemplate="header"></ng-template>
+    <div class="text-center text-lg">
+      Sign in to <span style="color: #005e9e" class="font-medium">AVL</span> Vehicle Overview App
+    </div>
+    <p-divider></p-divider>
+    <ng-container>
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <div class="mb-4">
+          <label class="font-medium text-gray-600 text-sm" for="username">Username*</label>
+          <input class="w-full mt-2"
+                 formControlName="username"
+                 id="username"
+                 pInputText
+                 placeholder="Enter username"
+                 type="text"
+          />
+          <div *ngIf="(loginForm.controls['username'].invalid && loginForm.controls['username'].touched) ||
+           loginForm.controls['username'].dirty">
+            <small *ngIf="loginForm.controls['username'].errors?.['required']" class="text-warn ml-1">
+              Username is required.
+            </small>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label class="font-medium text-gray-600 text-sm" for="password">Password*</label>
+        </div>
+        <p-password formControlName="password"
+                    [feedback]="true"
+                    [toggleMask]="true"
+                    id="password"
+                    placeholder="Enter password"
+                    styleClass="w-full"
+                    class="full-width-input">
+          <ng-template pTemplate="footer">
+            <p-divider></p-divider>
+            <p class="mt-2 text-sm font-medium text-blue-800">Password Requirements</p>
+            <ul class="pl-2 ml-2 mt-0 w-full text-sm">
+              <li
+                [class.text-green-800]="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['minlength']">
+                Minimum 8 characters
+                <i *ngIf="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['minlength']"
+                   class="pi pi-check text-green-800 text-xs font-bold"></i>
+              </li>
+              <li
+                [class.text-green-800]="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['uppercase']">
+                At least one capital letter
+                <i *ngIf="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['uppercase']"
+                   class="pi pi-check text-green-800 text-xs font-bold"></i>
+              </li>
+              <li
+                [class.text-green-800]="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['numeric']">
+                At least one number
+                <i *ngIf="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['numeric']"
+                   class="pi pi-check text-green-800 text-xs font-bold"></i>
+              </li>
+              <li
+                [class.text-green-800]="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['specialChar']">
+                At least one special character
+                <i
+                  *ngIf="loginForm.controls['password'].value && !loginForm.controls['password'].errors?.['specialChar']"
+                  class="pi pi-check text-green-800 text-xs font-bold"></i>
+              </li>
+            </ul>
+          </ng-template>
+        </p-password>
+        <div *ngIf="(loginForm.controls['password'].invalid && loginForm.controls['password'].touched) ||
+           loginForm.controls['password'].dirty">
+          <small *ngIf="loginForm.controls['password'].errors?.['required']" class="text-warn ml-1">
+            Password is required.
+          </small>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <button [disabled]="loginForm.invalid"
+                  [loading]="isLoading"
+                  pButton
+                  type="submit"
+                  class="w-full items-center"
+                  label="Sign in"
+          ></button>
+        </div>
+        <div *ngIf="errorMessage" class="text-center text-warn mt-2">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </ng-container>
+  </p-card>
+</div>
+
