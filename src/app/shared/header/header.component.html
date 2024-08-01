@@ -1,0 +1,15 @@
+<div class="flex justify-content-between align-items-center" style="background-color: #005e9e">
+  <img src="assets/logo/avl.jpg" style="width: 5rem" class="ml-2 cursor-pointer" alt=""/>
+  <div class="flex align-items-center mt-2 md:mt-0">
+    <p-avatar icon="pi pi-user" size="45" shape="circle" styleClass="mr-1 "></p-avatar>
+    <div class="p-2 text-xs md:text-sm text-gray-100">
+
+    </div>
+    <button pButton class="ml-2 mr-2 p-button-text" (click)="menu.toggle($event)">
+      <i class="pi pi-cog"></i>
+      <span class="ml-1 pi pi-angle-down"></span>
+    </button>
+    <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
+  </div>
+</div>
+

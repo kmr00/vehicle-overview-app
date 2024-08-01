@@ -1,6 +1,45 @@
 # VehicleOverviewApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.
+The application includes a login page and an overview page for displaying vehicle data.
+The application uses Angular's **in-memory web API** to simulate backend operations for
+authentication and login functionality.
+
+## Features
+- **User Authentication**: Login with username and password, and store the username in session storage.
+- **Vehicle Overview**: Display vehicle data in a table with filtering and sorting capabilities.
+- **Responsive UI**: Using PrimeNG and PrimeFlex.
+
+## Technologies Used
+- **Angular** 15.0.0.
+- **PrimeNg** 15.0.0.
+- **PrimeFlex** 3.1.3.
+- **Angular In-Memory Web API**: For mocking backend API responses.
+- **RxJS**
+
+## Application Pages
+### Login Page
+Login page where users can authenticate themselves using a username and password. 
+Successful authentication stores the username in session storage and redirects 
+the user to the vehicle overview page.
+
+### Vehicle Overview Page
+An overview page that displays vehicle data in a table with filtering and sorting capabilities.
+This page is only accessible to authenticated users.
+
+## Additional Features
+### Auth Guards
+Auth Guards are used to protect routes and ensure that only authenticated 
+users can access certain parts of the application. If a user is not authenticated, 
+they will be redirected to the login page.
+
+### Login Guard
+A Login Guard is used to prevent authenticated users from accessing the login page.
+If a user is already authenticated, they will be redirected to the vehicle overview page.
+
+## API Endpoints
+The application interacts with the following API endpoints using the **in-memory web API**:
+
+- **POST** /api/login: Authenticates a user.
 
 ## Development server
 
